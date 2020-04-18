@@ -6,7 +6,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 
-updater = Updater(token='1294960917:AAG6UoNDS378YdWupM5nejbt8Tc1SfldEow', use_context=True)
+updater = Updater(token='TELEGRAM_API_TOKEN', use_context=True)
 dispatcher = updater.dispatcher
 
 
@@ -67,7 +67,7 @@ def clothes(update, context):
 
 
 def _response_to_weather_api(city):
-    params = {'q': city, 'APPID': 'b790ea172172be3b0ceef9484a837273'}
+    params = {'q': city, 'APPID': 'WEATHER_API_TOKEN'}
     req_weather = requests.get('https://api.openweathermap.org/data/2.5/weather', params=params)
     if req_weather.status_code != 200:
         return json.dumps({'status': False})
@@ -89,8 +89,7 @@ def _response_to_weather_api(city):
 
 
 def _response_to_translate_api(text):
-    params_translate = {'key': 'trnsl.1.1.20200408T120305Z.f56820861553d9b3'
-                               '.47dc3dc32cfc58f7238de9b2ee01eeab9a0e57b0 ',
+    params_translate = {'key': 'TRANSLATE_API_TOKEN',
                         'text': text, 'lang': 'ru'}
     req_translate = requests.get('https://translate.yandex.net/api/v1.5/tr.json/translate', params_translate)
     data_translate = json.loads(req_translate.text)
